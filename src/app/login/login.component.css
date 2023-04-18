@@ -1,0 +1,21 @@
+.example-card {
+    max-width: 400px;
+    height: 250px; 
+    background:#f7f7f7;
+    background-blend-mode:saturation;
+    backdrop-filter: saturate(100%) blur(100px);
+    margin-top:15%;
+    margin-left: 33%;
+  }
+  .example-header-image {
+    background-size: cover;
+  }
+  .example-header-image {
+    background-size:auto;
+  }
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 15px;
+  } 
+  button-row button{
+    margin-right: 8px;
+  }

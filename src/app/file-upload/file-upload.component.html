@@ -1,0 +1,30 @@
+<div class="container">
+    <mat-card class="card">
+        <mat-form-field floatPlaceholder="never">
+        <input [hidden]="true" (change)="onFileSelect($event)" type="file" accept=".csv" #fileSelect>
+        <input readonly matInput [(ngModel)]="filename" placeholder="Select file..."/>
+        <button *ngIf="this.file" (click)="deleteFile(); fileSelect.value='';" matSuffix matTooltip="Remove selected file"
+                [matTooltipPosition]="'above'" type="button" color="warn" mat-icon-button>
+                <mat-icon>close</mat-icon>
+              </button>
+        <button matSuffix mat-icon-button (click)="fileSelect.click();"  matTooltip="Select a file" [matTooltipPosition]="'above'">
+          <mat-icon>file_upload</mat-icon>
+        </button> 
+      </mat-form-field>
+      <mat-form-field appearance="fill" >
+        <mat-label>Periodicity</mat-label>
+        <mat-select [(ngModel)]="periodicity">
+          <mat-option value="Year">Year</mat-option>
+          <mat-option value="Month">Month</mat-option>
+          <mat-option value="Week">Week</mat-option>
+          <mat-option value="Day">Day</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>Duration</mat-label>
+        <input matInput type="number" [(ngModel)]="duration">
+      </mat-form-field>
+      <button (click)="submit()" mat-flat-button style="background-color: #3d973d; color: #ffff; min-height: 40px;">Submit
+      </button>
+    </mat-card>
+</div>
