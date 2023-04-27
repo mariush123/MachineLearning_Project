@@ -4,6 +4,9 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score
+
+
 
 def fun(period,duration):
     data=pd.read_csv("files/PCEPersonalSpending.csv")
@@ -17,13 +20,17 @@ def fun(period,duration):
     model.fit(x_train,y_train)
     plt.plot(x,y)
     result=model.predict(x_test)
+    r2score = r2_score(y_test,result)
+    
     print(duration)
     if(period=='Year'):
         duration=duration*12
-    predict=model.predict([[duration]])    
-    plt.scatter(x_test,result,color="red")
-    plt.savefig("files/fig.png")
-    plt.show()
+    duration+=251   
+    forecast = [i for i in range(251,duration+1)]
+    forecast = np.reshape(forecast,(-1,1))
+    p = model.predict(forecast)
+    plt.plot(forecast,p,color='yellow')
+    plt.savefig('files/fig.png')
 
 
 

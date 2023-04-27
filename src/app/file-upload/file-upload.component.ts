@@ -53,6 +53,7 @@ export class FileUploadComponent implements OnInit {
     this.filename = null;
     this.formfile.delete('file');
     // this.fileSelect
+    
   }
   submit(){
     this.sendData();
