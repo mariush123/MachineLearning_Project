@@ -25,11 +25,17 @@ def fun(period,duration):
     final = poly.transform(x_test)
     model=LinearRegression()
     model.fit(x_poly,y_train)
-    plt.plot(x,y)
     result=model.predict(final)
-    r2score = r2_score(y_test,result)
+    plt.plot(x,y)
+    plt.title("Actual vs Predicted")
+    plt.xlabel("Period in months")
+    plt.ylabel("Sales of shampoo")
+    plt.legend(loc='upper left')
     
+    r2score = r2_score(y_test,result)
+    print(r2score)
     print(duration)
+    print(period)
     if(period=='Year'):
         duration=duration*12
     duration+=36
